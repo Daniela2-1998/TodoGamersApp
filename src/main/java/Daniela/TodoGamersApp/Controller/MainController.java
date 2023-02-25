@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/inicio")
+@RequestMapping(path = "inicio")
 public class MainController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class MainController {
     }
 
 
-    @GetMapping(value = "/inicio")
+    @GetMapping(value = "inicio")
     public ModelAndView verPaginaDeInicio(@PageableDefault(sort = "titulo", size = 5) Pageable pageable) {
         Page<Game> ultimosJuegos = gameRepository.findAll(pageable);
         return new ModelAndView("/index").addObject("ultimosJuegos", ultimosJuegos);

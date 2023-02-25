@@ -39,13 +39,13 @@ public class AdminController {
 	@GetMapping("")
 	public ModelAndView verPaginaDeInicio(@PageableDefault(sort = "titulo", size = 5) Pageable pageable) {
 		Page<Game> games = gameRepositorio.findAll(pageable);
-		return new ModelAndView("admin/index").addObject("games", games);
+		return new ModelAndView("adminindex").addObject("games", games);
 	}
 
 	@GetMapping("/juego/nuevo")
 	public ModelAndView mostrarFormularioDeNuevoJuego() {
 		List<Platform> platform = platformRepository.findAll(Sort.by("titulo"));
-		return new ModelAndView("admin/nuevo-juego")
+		return new ModelAndView("nuevo-juego")
 				.addObject("game", new Game())
 				.addObject("platforms", platform);
 	}
@@ -58,7 +58,7 @@ public class AdminController {
 			}
 			
 			List<Platform> platforms = platformRepository.findAll(Sort.by("titulo"));
-			return new ModelAndView("admin/nuevo-juego")
+			return new ModelAndView("nuevo-juego")
 					.addObject("game", game)
 					.addObject("platforms", platforms);
 		}
@@ -75,7 +75,7 @@ public class AdminController {
 		Game game = gameRepositorio.getOne(id);
 		List<Platform> platforms = platformRepository.findAll(Sort.by("titulo"));
 		
-		return new ModelAndView("admin/editar-juego")
+		return new ModelAndView("editar-juego")
 				.addObject("game", game)
 				.addObject("platforms", platforms);
 	}
@@ -84,7 +84,7 @@ public class AdminController {
 	public ModelAndView actualizarJuego(@PathVariable Integer id,@Validated Game game,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			List<Platform> platforms = platformRepository.findAll(Sort.by("titulo"));
-			return new ModelAndView("admin/editar-juego")
+			return new ModelAndView("editar-juego")
 					.addObject("game", game)
 					.addObject("platforms", platforms);
 		}
