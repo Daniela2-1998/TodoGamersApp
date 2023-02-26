@@ -66,7 +66,7 @@ form .invalid-feedback {
           Inicio de sesión
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/">Iniciar sesión</a></li>
+          <li><a class="dropdown-item" href="/login">Iniciar sesión</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="/registro">Registrate</a></li>
         </ul>
@@ -92,7 +92,7 @@ form .invalid-feedback {
     <tr>
       <th></th>
       <th>Juego</th>
-      <th>Fecha de Estreno</th>
+      <th>Fecha lanzamientocd</th>
       <th></th>
     </tr>
     </thead>
@@ -107,7 +107,7 @@ form .invalid-feedback {
         <div th:text="*{titulo}" class="fs-5 fw-bold"></div>
         <p th:text="*{descripcion}"></p>
         <div>
-							<span class="badge rounded-pill bg-light text-dark me-1"
+							<span class="badge rounded-pill bg-dark text-light me-1"
                                   th:each="plataforma : *{plataformas}" th:text="${plataforma.titulo}">
 							</span>
         </div>

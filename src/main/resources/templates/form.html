@@ -38,7 +38,7 @@ form .invalid-feedback {
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/inicio">Inicio</a>
+					<a class="nav-link" aria-current="page" href="/inicio">Inicio</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/noticias">Noticias</a>
@@ -54,7 +54,7 @@ form .invalid-feedback {
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/admin">Administrador</a>
+					<a class="nav-link active" href="/admin">Administrador</a>
 				</li>
 			</ul>
 			<form class="d-flex" role="search">
@@ -66,7 +66,7 @@ form .invalid-feedback {
 					Inicio de sesión
 				</a>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" href="/">Iniciar sesión</a></li>
+					<li><a class="dropdown-item" href="/login">Iniciar sesión</a></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><a class="dropdown-item" href="/registro">Registrate</a></li>
 				</ul>
@@ -82,8 +82,7 @@ form .invalid-feedback {
 
 	<div layout:fragment="form">
 		<br>
-		<form action="" method="post" th:object="${game}"
-			enctype="multipart/form-data">
+		<form action="" method="post" th:object="${game}" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="titulo" class="form-label">Titulo: </label> <input
 					type="text" id="titulo" placeholder="Digite el titulo"
@@ -136,8 +135,8 @@ form .invalid-feedback {
 			<div class="mb-3">
 				<label for="plataformas" class="form-label">Plataformas: </label> <select
 					id="plataformas" class="form-control" th:field="*{plataformas}" multiple>
-					<option th:each="genero : ${plataformas}" th:value="${plataforma.id}"
-						th:text="${plataformas.titulo}"></option>
+					<option th:each="plataforma : ${plataformas}" th:value="${plataforma.id}"
+						th:text="${plataforma.titulo}"></option>
 				</select>
 				<div class="invalid-feedback"
 					th:if="${#fields.hasErrors('plataformas')}" th:errors="*{plataformas}"></div>
