@@ -42,12 +42,12 @@ public class AdminController {
 		return new ModelAndView("adminindex").addObject("games", games);
 	}
 
-	@GetMapping("/juego/nuevo")
+	@GetMapping("/juego/nuevos")
 	public ModelAndView mostrarFormularioDeNuevoJuego() {
-		List<Platform> platform = platformRepository.findAll(Sort.by("titulo"));
+		List<Platform> platforms = platformRepository.findAll(Sort.by("titulo"));
 		return new ModelAndView("nuevo-juego")
 				.addObject("game", new Game())
-				.addObject("platforms", platform);
+				.addObject("platforms", platforms);
 	}
 	
 	@PostMapping("/juego/nuevo")
@@ -71,7 +71,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/juego/{id}/editar")
-	public ModelAndView mostrarFormilarioDeEditarJuego(@PathVariable Integer id) {
+	public ModelAndView mostrarFormularioDeEditarJuego(@PathVariable Integer id) {
 		Game game = gameRepositorio.getOne(id);
 		List<Platform> platforms = platformRepository.findAll(Sort.by("titulo"));
 		

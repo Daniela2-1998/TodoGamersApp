@@ -29,20 +29,21 @@ public class MainController {
 
     @GetMapping(value = "")
     public ModelAndView paginaInicio(){
-        return new ModelAndView("/index");
+
+        return new ModelAndView("index");
     }
 
 
     @GetMapping(value = "inicio")
     public ModelAndView verPaginaDeInicio(@PageableDefault(sort = "titulo", size = 5) Pageable pageable) {
         Page<Game> ultimosJuegos = gameRepository.findAll(pageable);
-        return new ModelAndView("/index").addObject("ultimosJuegos", ultimosJuegos);
+        return new ModelAndView("index").addObject("ultimosJuegos", ultimosJuegos);
     }
 
-    @GetMapping("/juego/nuevo")
+    @GetMapping("juego/nuevo")
     public ModelAndView mostrarFormularioDeNuevoJuego() {
         List<Platform> platforms = platformRepository.findAll(Sort.by("titulo"));
-        return new ModelAndView("admin/nueva-pelicula")
+        return new ModelAndView("nuevo-juego")
                 .addObject("game", new Game())
                 .addObject("platforms", platforms);
     }
@@ -69,7 +70,7 @@ public class MainController {
     @GetMapping("/juegos")
     public ModelAndView listarJuegos(@PageableDefault(sort = "fechaEstreno",direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Game> games = gameRepository.findAll(pageable);
-        return new ModelAndView("games")
+        return new ModelAndView("juegos")
                 .addObject("games", games);
     }
 
